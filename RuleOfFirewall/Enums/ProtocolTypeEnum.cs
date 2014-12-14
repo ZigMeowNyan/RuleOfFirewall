@@ -7,8 +7,8 @@ namespace RuleOfFirewall.Enums
 {
 	public enum ProtocolTypeEnum
 	{
-		UDP = 6,
-		TCP = 17,
+		TCP = 6,
+		UDP = 17,
 		Any = 256,
 	}
 }
