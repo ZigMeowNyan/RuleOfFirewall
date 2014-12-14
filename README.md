@@ -11,4 +11,9 @@ A Windows firewall tool for the lazy and unorganized. Rule your traffic with an 
 * Old code from an evening project.
 * Not very organized.
 
+### Notes:
+* Program exceptions don't import very well when the program isn't present on the machine.
+* The windows firewall interface is rather finicky about order, and there's some warnings on the internet of a need to artificially delay property/method access in certain situations (which I haven't found, yet). Please confirm that the rule imported as expected. If not, please create an issue, note the differences, and attach the rule file. If possible, do some digging on your own.
+* Use the Group functionality (just set it to a string value).  It's surprisingly useful.
+
 Not dead? Have a computer? Give the gift of code. Find some sort of pointless-yet-useful code lying around and share it. Join the embarrassment.

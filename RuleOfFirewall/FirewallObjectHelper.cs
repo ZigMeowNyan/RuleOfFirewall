@@ -107,25 +107,18 @@ namespace RuleOfFirewall
 			TrafficDirectionTypeEnum TrafficDirection = TrafficDirectionTypeEnum.Incoming)
 		{
 			INetFwRule firewallRule = Extensions.InstantiateTypeFromProgID("HNetCfg.FWRule");
+			//Don't count on the property list at http://msdn.microsoft.com/en-us/library/windows/desktop/aa365344(v=vs.85).aspx being in the correct order...
 			firewallRule.Name = RuleName;
-			firewallRule.Direction = TrafficDirection.GetCOMEnum();
-			firewallRule.Action = actionType.GetCOMEnum();
-			firewallRule.Profiles = (int)profileType;
-			#region Protocol
-			firewallRule.Protocol = (int)protocol;
-			#endregion
-			if (Program.Matches("Any"))
-			{
-			#region Addresses and ports
-				if (localAddresses.Matches("Any"))
-					firewallRule.LocalAddresses = "*";
-				else
-					firewallRule.LocalAddresses = localAddresses.Replace(" ", "");
-				if (remoteAddresses.Matches("Any"))
-					firewallRule.RemoteAddresses = "*";
-				else
-					firewallRule.RemoteAddresses = remoteAddresses.Replace(" ", "");
+			//Description
+			firewallRule.Enabled = Enabled;
 
+			if (!string.IsNullOrWhiteSpace(Program) && !Program.Matches("Any"))
+				firewallRule.ApplicationName = Program;
+			//ServiceName
+			firewallRule.Protocol = (int)protocol;
+			#region Addresses and ports
+			if (string.IsNullOrWhiteSpace(Program) ||  Program.Matches("Any"))
+			{
 				if (localPorts.Matches("Any"))
 					firewallRule.LocalPorts = "*";
 				else
@@ -134,17 +127,28 @@ namespace RuleOfFirewall
 					firewallRule.RemotePorts = "*";
 				else
 					firewallRule.RemotePorts = remotePorts.Replace(" ", "");
-			#endregion
+				if (localAddresses.Matches("Any"))
+					firewallRule.LocalAddresses = "*";
+				else
+					firewallRule.LocalAddresses = localAddresses.Replace(" ", "");
+				if (remoteAddresses.Matches("Any"))
+					firewallRule.RemoteAddresses = "*";
+				else
+					firewallRule.RemoteAddresses = remoteAddresses.Replace(" ", "");
 			}
-			else
-				firewallRule.ApplicationName = Program;//I don't think we set IP addresses and ports when we're setting the program.
+			#endregion
+			firewallRule.Profiles = (int)profileType;
+			//Interfaces
+			//InterfaceTypes
+			firewallRule.Direction = TrafficDirection.GetCOMEnum();
+			firewallRule.Action = actionType.GetCOMEnum();
+			//Edge Traversal
 			//Set either scope or remote addresses, but not both.  - http://msdn.microsoft.com/en-us/library/aa366436(v=vs.85).aspx
 			#region AllowedSettings
 			//TODO: Find settings for Allowed Users and Allowed Computers
 			#endregion
-			//firewallRule.InterfaceTypes = "All";
 			firewallRule.Grouping = Group;
-			firewallRule.Enabled = Enabled;
+			//firewallRule.InterfaceTypes = "All";
 			return firewallRule;
 			//Additional data: http://msdn.microsoft.com/en-us/library/aa366447(v=vs.85).aspx
 			//Interfaces: http://msdn.microsoft.com/en-us/library/aa366449(v=vs.85).aspx
