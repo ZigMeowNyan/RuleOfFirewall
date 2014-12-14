@@ -1,0 +1,3 @@
+Name	Group	Profile	Enabled	Action	Override	Program	Local Address	Remote Address	Protocol	Local Port	Remote Port	Allowed Users	Allowed Computers	
+Remote Debugging UDP	VS_Debug	All	Yes	Allow	No	Any	Any	Any	UDP	137, 138, 500, 4500	Any	Any	Any	
+Remote Debugging TCP	VS_Debug	All	Yes	Allow	No	Any	Any	Any	TCP	135, 139, 445	Any	Any	Any	

@@ -1,0 +1,2 @@
+Name	Group	Profile	Enabled	Action	Override	Program	Local Address	Remote Address	Protocol	Local Port	Remote Port	Allowed Users	Allowed Computers	
+SQL Browser	SQL	Domain, Private	Yes	Allow	No	%ProgramFiles% (x86)\Microsoft SQL Server\90\Shared\sqlbrowser.exe	Any	Any	Any	Any	Any	Any	Any	

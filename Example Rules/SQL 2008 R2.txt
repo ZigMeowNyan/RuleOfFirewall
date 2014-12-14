@@ -1,0 +1,4 @@
+Name	Group	Profile	Enabled	Action	Override	Program	Local Address	Remote Address	Protocol	Local Port	Remote Port	Allowed Users	Allowed Computers	
+SQL [SQLEXPRESS]	SQL	Domain, Private	Yes	Allow	No	%ProgramFiles%\Microsoft SQL Server\MSSQL10_50.SQLEXPRESS\MSSQL\Binn\sqlservr.exe	Any	Any	Any	Any	Any	Any	Any	
+SQL UDP 1434	SQL	All	Yes	Allow	No	Any	Any	Any	UDP	1434	Any	Any	Any	
+SQL TCP 1434	SQL	All	Yes	Allow	No	Any	Any	Any	TCP	1433	Any	Any	Any	

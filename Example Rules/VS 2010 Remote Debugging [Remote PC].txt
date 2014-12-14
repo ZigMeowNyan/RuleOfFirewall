@@ -1,0 +1,3 @@
+Name	Group	Profile	Enabled	Action	Override	Program	Local Address	Remote Address	Protocol	Local Port	Remote Port	Allowed Users	Allowed Computers	
+VS 2010 Remote Debugging Monitor (x86)	VS_Debug	All	Yes	Allow	No	%ProgramFiles(x86)%\Microsoft Visual Studio 10.0\Common7\IDE\Remote Debugger\x86\msvsmon.exe	Any	Any	Any	Any	Any	Any	Any	
+VS 2010 Remote Debugging Monitor (x64)	VS_Debug	All	Yes	Allow	No	%ProgramFiles(x86)%\Microsoft Visual Studio 10.0\Common7\IDE\Remote Debugger\x64\msvsmon.exe	Any	Any	Any	Any	Any	Any	Any	
